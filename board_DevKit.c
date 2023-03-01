@@ -56,39 +56,6 @@ void BOARD_Pinmux_Init()
 	uint8_t config_pin_inout_nopull =
 			PAD_FUNCTION_READ_ENABLE;
 
-	/* I3C interface */
-#if BOARD_I3C_OUTPUT == OUTPUT_A
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_6, PINMUX_ALTERNATE_FUNCTION_3);	// P2_6: SDA (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_6, config_i3c);
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_7, PINMUX_ALTERNATE_FUNCTION_3);	// P2_7: SCL (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_7, config_i3c);
-#elif BOARD_I3C_OUTPUT == OUTPUT_B
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_8, PINMUX_ALTERNATE_FUNCTION_3);	// P3_8: SDA (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_8, config_i3c);
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_9, PINMUX_ALTERNATE_FUNCTION_4);	// P3_9: SCL (mux mode 4)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_9, config_i3c);
-#endif
-
-	/* I2S2 interface */
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_1, PINMUX_ALTERNATE_FUNCTION_3);	// P2_1: SDI (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_1, config_pin_inout_nopull);
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_3, PINMUX_ALTERNATE_FUNCTION_3);	// P2_3: SCLK(mux mode 3)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_3, config_pin_inout_nopull);
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_4, PINMUX_ALTERNATE_FUNCTION_2);	// P2_4: WS  (mux mode 2)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_4, config_pin_inout_nopull);
-
-	/* UART4 interface */
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_1, PINMUX_ALTERNATE_FUNCTION_1);	// P3_1: RX  (mux mode 1)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_1, config_pin_input_pullup);
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_2, PINMUX_ALTERNATE_FUNCTION_1);	// P3_2: TX  (mux mode 1)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_2, config_pin_inout_nopull);
-
-	/* UART2 interface */
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_16, PINMUX_ALTERNATE_FUNCTION_2);	// P3_16:RX  (mux mode 2)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_16, config_pin_input_pullup);
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_17, PINMUX_ALTERNATE_FUNCTION_2);	// P3_17:TX  (mux mode 2)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_17, config_pin_inout_nopull);
-
 	/* GPIO interfaces - initial GPIO state is lowest power */
 
 #if _APP_ADDRESS >= OSPI0_BASE
@@ -168,6 +135,39 @@ void BOARD_Pinmux_Init()
 #elif BOARD_CAMERA_OUTCLK_OUTPUT == OUTPUT_B
 	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_7, PINMUX_ALTERNATE_FUNCTION_6);
 #endif
+
+	/* I3C interface */
+#if BOARD_I3C_OUTPUT == OUTPUT_A
+	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_6, PINMUX_ALTERNATE_FUNCTION_3);	// P2_6: SDA (mux mode 3)
+	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_6, config_i3c);
+	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_7, PINMUX_ALTERNATE_FUNCTION_3);	// P2_7: SCL (mux mode 3)
+	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_7, config_i3c);
+#elif BOARD_I3C_OUTPUT == OUTPUT_B
+	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_8, PINMUX_ALTERNATE_FUNCTION_3);	// P3_8: SDA (mux mode 3)
+	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_8, config_i3c);
+	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_9, PINMUX_ALTERNATE_FUNCTION_4);	// P3_9: SCL (mux mode 4)
+	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_9, config_i3c);
+#endif
+
+	/* I2S2 interface */
+	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_1, PINMUX_ALTERNATE_FUNCTION_3);	// P2_1: SDI (mux mode 3)
+	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_1, config_pin_inout_nopull);
+	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_3, PINMUX_ALTERNATE_FUNCTION_3);	// P2_3: SCLK(mux mode 3)
+	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_3, config_pin_inout_nopull);
+	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_4, PINMUX_ALTERNATE_FUNCTION_2);	// P2_4: WS  (mux mode 2)
+	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_4, config_pin_inout_nopull);
+
+	/* UART4 interface */
+	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_1, PINMUX_ALTERNATE_FUNCTION_1);	// P3_1: RX  (mux mode 1)
+	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_1, config_pin_input_pullup);
+	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_2, PINMUX_ALTERNATE_FUNCTION_1);	// P3_2: TX  (mux mode 1)
+	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_2, config_pin_inout_nopull);
+
+	/* UART2 interface */
+	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_16, PINMUX_ALTERNATE_FUNCTION_2);	// P3_16:RX  (mux mode 2)
+	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_16, config_pin_input_pullup);
+	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_17, PINMUX_ALTERNATE_FUNCTION_2);	// P3_17:TX  (mux mode 2)
+	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_17, config_pin_inout_nopull);
 }
 
 void BOARD_Clock_Init()
