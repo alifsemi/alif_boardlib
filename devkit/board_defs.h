@@ -14,21 +14,18 @@
  ******************************************************************************/
 
 #define BOARD_I3C_INSTANCE                      0
-#define BOARD_I3C_OUTPUT                        OUTPUT_B
 
 #define BOARD_I2C_INSTANCE                      0
-#define BOARD_I2C_OUTPUT                        OUTPUT_A
 
 #define BOARD_I2S_INSTANCE                      2
-#define BOARD_I2S_OUTPUT                        OUTPUT_A
 
 #define BOARD_UART1_INSTANCE                    4
-#define BOARD_UART1_OUTPUT                      OUTPUT_B
 
 #define BOARD_UART2_INSTANCE                    2
-#define BOARD_UART2_OUTPUT                      OUTPUT_B
 
-#define BOARD_CAMERA_OUTCLK_OUTPUT              OUTPUT_B
+#define BOARD_LED_COUNT                         2
+#define BOARD_LEDRGB_COUNT                      0
+#define BOARD_BUTTON_COUNT                      2
 
 // <o> User BUTTON1 (sw1) GPIO port number and pin number
 #define BOARD_BUTTON1_GPIO_PORT                 1

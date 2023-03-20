@@ -11,15 +11,12 @@
 /******************************************************************************
  * @file     board.h
  * @brief    BOARD API
+ *
+ *           copy this file to your project and remove #if 0 / #endif
  ******************************************************************************/
-
 #if 0
-
 #ifndef __BOARD_LIB_H
 #define __BOARD_LIB_H
-
-#define OUTPUT_A    1
-#define OUTPUT_B    2
 
 // <o> Alif Development Kit variant
 //     <0=> Alif Development Kit (Silicon Rev A / Board Rev B and Rev C)
@@ -29,13 +26,13 @@
 
 #if (BOARD_ALIF_DEVKIT_VARIANT == 0)
 #define BOARD_IS_ALIF_DEVKIT_VARIANT
-#include "board_DevKit.h"
+#include "devkit/board_defs.h"
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 1)
 #define BOARD_IS_ALIF_APPKIT_ALPHA1_VARIANT
-#include "board_AppKit_Alpha1.h"
+#include "appkit_alpha1/board_defs.h"
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 2)
 #define BOARD_IS_ALIF_APPKIT_ALPHA2_VARIANT
-#include "board_AppKit_Alpha2.h"
+#include "appkit_alpha2/board_defs.h"
 #endif
 
 // <o> ILI9806E LCD panel variant

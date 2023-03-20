@@ -9,18 +9,18 @@
  */
 
 /******************************************************************************
- * @file     board_AppKit_Alpha2.c
- * @brief    BOARD API implementation for Alif AI/ML Application Kit (Rev. B)
+ * @file     board_AppKit_Alpha1.c
+ * @brief    BOARD API implementation for Alif AI/ML Application Kit (Rev. A)
  ******************************************************************************/
 
 #include "board.h"
 
-#if defined(BOARD_IS_ALIF_APPKIT_ALPHA2_VARIANT)
+#if defined(BOARD_IS_ALIF_APPKIT_ALPHA1_VARIANT)
 #include "Driver_GPIO.h"
 #include "Driver_PINMUX_AND_PINPAD.h"
 
-extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
-extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
+#include "drv_i2c_bitbang.h"
+
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_LED1_GPIO_PORT);
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_LED2_GPIO_PORT);
 
@@ -33,8 +33,6 @@ void BOARD_Pinmux_Init()
 	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_CAMERA_RESET_GPIO_PORT);
 	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_CAMERA_POWER_GPIO_PORT);
 
-	ARM_DRIVER_GPIO *BOARD_BUTTON1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
-	ARM_DRIVER_GPIO *BOARD_BUTTON2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_LED1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED1_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_LED2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED2_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_LCD_RESET_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LCD_RESET_GPIO_PORT);
@@ -43,11 +41,6 @@ void BOARD_Pinmux_Init()
 	ARM_DRIVER_GPIO *BOARD_TOUCH_INT_GPIOdrv = &ARM_Driver_GPIO_(BOARD_TOUCH_INT_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_CAMERA_RESET_GPIOdrv = &ARM_Driver_GPIO_(BOARD_CAMERA_RESET_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_CAMERA_POWER_GPIOdrv = &ARM_Driver_GPIO_(BOARD_CAMERA_POWER_GPIO_PORT);
-
-	uint32_t config_i3c =
-			PAD_FUNCTION_READ_ENABLE |
-			PAD_FUNCTION_DRIVER_DISABLE_STATE_WITH_PULL_UP |
-			PAD_FUNCTION_DRIVER_OPEN_DRAIN;
 
 	uint32_t config_pin_input =
 			PAD_FUNCTION_READ_ENABLE |
@@ -69,16 +62,6 @@ void BOARD_Pinmux_Init()
 	*((uint32_t *)0x71006030) = 0;
 	*((uint32_t *)0x71006034) = 0;
 	*((uint32_t *)0x71006038) = 0;
-
-	BOARD_BUTTON1_GPIOdrv->SetValue(BOARD_BUTTON1_PIN_NO, GPIO_PIN_OUTPUT_STATE_LOW);
-	BOARD_BUTTON1_GPIOdrv->SetDirection(BOARD_BUTTON1_PIN_NO, GPIO_PIN_DIRECTION_INPUT);
-	PINMUX_Config(BOARD_BUTTON1_GPIO_PORT, BOARD_BUTTON1_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0);
-	PINPAD_Config(BOARD_BUTTON1_GPIO_PORT, BOARD_BUTTON1_PIN_NO, config_pin_input);
-
-	BOARD_BUTTON2_GPIOdrv->SetValue(BOARD_BUTTON2_PIN_NO, GPIO_PIN_OUTPUT_STATE_LOW);
-	BOARD_BUTTON2_GPIOdrv->SetDirection(BOARD_BUTTON2_PIN_NO, GPIO_PIN_DIRECTION_INPUT);
-	PINMUX_Config(BOARD_BUTTON2_GPIO_PORT, BOARD_BUTTON2_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0);
-	PINPAD_Config(BOARD_BUTTON2_GPIO_PORT, BOARD_BUTTON2_PIN_NO, config_pin_input);
 
 	BOARD_LED1_GPIOdrv->SetValue(BOARD_LED1_PIN_NO, GPIO_PIN_OUTPUT_STATE_LOW);
 	BOARD_LED1_GPIOdrv->SetDirection(BOARD_LED1_PIN_NO, GPIO_PIN_DIRECTION_OUTPUT);
@@ -121,31 +104,9 @@ void BOARD_Pinmux_Init()
 	PINPAD_Config(BOARD_CAMERA_POWER_GPIO_PORT, BOARD_CAMERA_POWER_PIN_NO, config_pin_inout_nopull);
 
 	/* CAMERA clock output */
-#if BOARD_CAMERA_OUTCLK_OUTPUT == OUTPUT_A
 	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_15, PINMUX_ALTERNATE_FUNCTION_7);
-#elif BOARD_CAMERA_OUTCLK_OUTPUT == OUTPUT_B
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_7, PINMUX_ALTERNATE_FUNCTION_6);
-#endif
 
-	/* I3C interface */
-#if BOARD_I3C_OUTPUT == OUTPUT_A
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_6, PINMUX_ALTERNATE_FUNCTION_3);	// P2_6: SDA (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_6, config_i3c);
-	PINMUX_Config(PORT_NUMBER_2, PIN_NUMBER_7, PINMUX_ALTERNATE_FUNCTION_3);	// P2_7: SCL (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_2, PIN_NUMBER_7, config_i3c);
-#elif BOARD_I3C_OUTPUT == OUTPUT_B
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_8, PINMUX_ALTERNATE_FUNCTION_3);	// P3_8: SDA (mux mode 3)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_8, config_i3c);
-	PINMUX_Config(PORT_NUMBER_3, PIN_NUMBER_9, PINMUX_ALTERNATE_FUNCTION_4);	// P3_9: SCL (mux mode 4)
-	PINPAD_Config(PORT_NUMBER_3, PIN_NUMBER_9, config_i3c);
-#endif
-}
-
-void BOARD_Clock_Init()
-{
-	/* Configure any SoC clock muxes and dividers
-	 * if not already covered in driver code
-	 */
+	i2c_init();
 }
 
 void BOARD_Power_Init()
@@ -171,47 +132,32 @@ void BOARD_Power_Init()
 	CAMERA_POWER_GPIO->SetDirection(BOARD_CAMERA_POWER_PIN_NO, GPIO_PIN_DIRECTION_OUTPUT);
 }
 
-void BOARD_BUTTON1_Init(BOARD_Callback_t user_cb)
+void BOARD_Clock_Init()
 {
-	ARM_DRIVER_GPIO *BOARD_BUTTON1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
-	BOARD_BUTTON1_GPIOdrv->Initialize(BOARD_BUTTON1_PIN_NO, user_cb);
+	/* Configure any SoC clock muxes and dividers
+	 * if not already covered in driver code
+	 */
 }
 
-void BOARD_BUTTON2_Init(BOARD_Callback_t user_cb)
-{
-	ARM_DRIVER_GPIO *BOARD_BUTTON2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
-	BOARD_BUTTON2_GPIOdrv->Initialize(BOARD_BUTTON2_PIN_NO, user_cb);
-}
+void BOARD_BUTTON1_Init(BOARD_Callback_t user_cb) { /* not implemented */ }
+void BOARD_BUTTON2_Init(BOARD_Callback_t user_cb) { /* not implemented */ }
 
-void BOARD_BUTTON1_Control(BOARD_BUTTON_CONTROL control)
-{
-	uint32_t arg = ARM_GPIO_IRQ_POLARITY_LOW | ARM_GPIO_IRQ_SENSITIVE_EDGE;
-
-	ARM_DRIVER_GPIO *BOARD_BUTTON1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
-	BOARD_BUTTON1_GPIOdrv->Control(BOARD_BUTTON1_PIN_NO, control, &arg);
-}
-
-void BOARD_BUTTON2_Control(BOARD_BUTTON_CONTROL control)
-{
-	uint32_t arg = ARM_GPIO_IRQ_POLARITY_LOW | ARM_GPIO_IRQ_SENSITIVE_EDGE;
-
-	ARM_DRIVER_GPIO *BOARD_BUTTON2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
-	BOARD_BUTTON2_GPIOdrv->Control(BOARD_BUTTON2_PIN_NO, control, &arg);
-}
+void BOARD_BUTTON1_Control(BOARD_BUTTON_CONTROL control) { /* not implemented */ }
+void BOARD_BUTTON2_Control(BOARD_BUTTON_CONTROL control) { /* not implemented */ }
 
 void BOARD_BUTTON1_GetState(BOARD_BUTTON_STATE *state)
 {
-	ARM_DRIVER_GPIO *BOARD_BUTTON1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
-	BOARD_BUTTON1_GPIOdrv->GetValue(BOARD_BUTTON1_PIN_NO, state);
-}
-void BOARD_BUTTON2_GetState(BOARD_BUTTON_STATE *state)
-{
-	ARM_DRIVER_GPIO *BOARD_BUTTON2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
-	BOARD_BUTTON2_GPIOdrv->GetValue(BOARD_BUTTON2_PIN_NO, state);
+    /* not implemented */
+	*state = BOARD_BUTTON_STATE_LOW;
 }
 
-void BOARD_LED1_Control(BOARD_LED_STATE state)
+void BOARD_BUTTON2_GetState(BOARD_BUTTON_STATE *state)
 {
+    /* not implemented */
+	*state = BOARD_BUTTON_STATE_LOW;
+}
+
+void BOARD_LED1_Control(BOARD_LED_STATE state){
 	ARM_DRIVER_GPIO *BOARD_LED1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED1_GPIO_PORT);
 	BOARD_LED1_GPIOdrv->SetValue(BOARD_LED1_PIN_NO, state);
 }
@@ -221,4 +167,5 @@ void BOARD_LED2_Control(BOARD_LED_STATE state)
 	ARM_DRIVER_GPIO *BOARD_LED2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED2_GPIO_PORT);
 	BOARD_LED2_GPIOdrv->SetValue(BOARD_LED2_PIN_NO, state);
 }
+
 #endif
