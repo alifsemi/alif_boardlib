@@ -13,15 +13,15 @@
  * @brief    BOARD API
  ******************************************************************************/
 
-#define BOARD_I3C_INSTANCE                      0
-
-#define BOARD_I2C_INSTANCE                      0
-
 #define BOARD_I2S_INSTANCE                      2
 
-#define BOARD_UART1_INSTANCE                    4
+#define BOARD_SPI_INSTANCE                      3
+#define BOARD_SPI_SS_PORT                       2   /* workaround for SPI thermometer */
+#define BOARD_SPI_SS_PIN                        24
 
-#define BOARD_UART2_INSTANCE                    2
+#define BOARD_UART1_INSTANCE                    2
+
+#define BOARD_UART2_INSTANCE                    4
 
 #define BOARD_LED_COUNT                         2
 #define BOARD_LEDRGB_COUNT                      0
