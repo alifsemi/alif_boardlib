@@ -33,6 +33,9 @@
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 2)
 #define BOARD_IS_ALIF_APPKIT_ALPHA2_VARIANT
 #include "appkit_alpha2/board_defs.h"
+#elif (BOARD_ALIF_DEVKIT_VARIANT == 3)
+#define BOARD_IS_ALIF_DEVKIT_B0_COB_VARIANT
+#include "devkit_b0_cob/board_defs.h"
 #endif
 
 // <o> ILI9806E LCD panel variant
@@ -50,8 +53,8 @@ void BOARD_Power_Init();
 typedef void (*BOARD_Callback_t) (unsigned int event);
 
 typedef enum {
-	BOARD_BUTTON_ENABLE_INTERRUPT = 1,          /**<BUTTON interrupt enable>*/
-	BOARD_BUTTON_DISABLE_INTERRUPT,             /**<BUTTON interrupt disable>*/
+	BOARD_BUTTON_ENABLE_INTERRUPT = 1,  /**<BUTTON interrupt enable>*/
+	BOARD_BUTTON_DISABLE_INTERRUPT,     /**<BUTTON interrupt disable>*/
 } BOARD_BUTTON_CONTROL;
 
 typedef enum {
