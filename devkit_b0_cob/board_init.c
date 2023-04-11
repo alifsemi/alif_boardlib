@@ -19,7 +19,7 @@
 #include "app_map.h"
 #include "global_map.h"
 #include "Driver_GPIO.h"
-#include "drv_pinmux_new.h"
+#include "Driver_PINMUX_AND_PINPAD.h"
 
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
