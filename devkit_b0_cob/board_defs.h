@@ -23,6 +23,8 @@
 
 #define BOARD_UART2_INSTANCE                    4
 
+#define BOARD_UART3_INSTANCE                    6
+
 #define BOARD_LED_COUNT                         2
 #define BOARD_LEDRGB_COUNT                      0
 #define BOARD_BUTTON_COUNT                      2
