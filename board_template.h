@@ -36,6 +36,9 @@
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 3)
 #define BOARD_IS_ALIF_DEVKIT_B0_COB_VARIANT
 #include "devkit_b0_cob/board_defs.h"
+#elif (BOARD_ALIF_DEVKIT_VARIANT == 4)
+#define BOARD_IS_ALIF_DEVKIT_B0_VARIANT
+#include "devkit_b0/board_defs.h"
 #endif
 
 // <o> ILI9806E LCD panel variant
