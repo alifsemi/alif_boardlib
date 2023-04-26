@@ -51,7 +51,7 @@ void BOARD_Pinmux_Init()
 
 	/* GPIO interfaces - initial GPIO state is lowest power */
 
-#if _APP_ADDRESS >= OSPI0_BASE
+#if _APP_ADDRESS >= OSPI0_MEM_BASE
 	HW_REG32(PINMUX_BASE, 0x10) = 0;
 	HW_REG32(PINMUX_BASE, 0x14) = 0;
 	HW_REG32(PINMUX_BASE, 0x18) = 0x34433333;	/* PINMUX for OSPI0 */
