@@ -141,7 +141,7 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_12, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, 0);   				// P12_6: SCLK (mux mode 2)
 	pinconf_set(PORT_12, PIN_7, PINMUX_ALTERNATE_FUNCTION_0, 0);   				// P12_7: GPIO (mux mode 0)
 
-	/* I2S2 interface */
+	/* LPI2S interface */
 	pinconf_set(PORT_13, PIN_4, PINMUX_ALTERNATE_FUNCTION_2, PADCTRL_READ_ENABLE);	// P13_4: SDI (mux mode 2)
 	pinconf_set(PORT_13, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P13_6: SCLK(mux mode 2)
 	pinconf_set(PORT_13, PIN_7, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P13_7: WS  (mux mode 2)
