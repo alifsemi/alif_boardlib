@@ -129,9 +129,7 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_7, PIN_7, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_7: SCL (mux mode 6)
 
 	/* CAMERA clock output */
-	pinconf_set(PORT_0, PIN_3, PINMUX_ALTERNATE_FUNCTION_6, 0);   				// P0_3: CAM_XVCLK (mux mode 6)
-	pinconf_set(PORT_3, PIN_6, PINMUX_ALTERNATE_FUNCTION_1, 0);   				// P3_6: XTAL_OUT (mux mode 1)
-	pinconf_set(PORT_10, PIN_3, PINMUX_ALTERNATE_FUNCTION_7, 0);   				// P10_3: CAM_XVCLK (mux mode 7)
+	pinconf_set(PORT_10, PIN_3, PINMUX_ALTERNATE_FUNCTION_7, 0);				// P10_3: CAM_XVCLK (mux mode 7)
 
 	/* UART4 interface */
 	pinconf_set(PORT_12, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);	// P12_1: RX  (mux mode 2)
