@@ -13,6 +13,8 @@
  * @brief    BOARD API
  ******************************************************************************/
 
+#define BOARD_CAMERA_I2C_INSTANCE               30 /* Signifying I3C interface */
+
 #define BOARD_I2S_INSTANCE                      4 /* SoC has I2S0-3 and LPI2S is assigned to 4 */
 
 #define BOARD_SPI_INSTANCE                      3
