@@ -83,6 +83,10 @@
 #define BOARD_TOUCH_INT_GPIO_PORT               9
 #define BOARD_TOUCH_INT_PIN_NO                  4
 
+// <o> Camera module power GPIO port number and pin number
+#define BOARD_CAMERA_POWER_GPIO_PORT            7
+#define BOARD_CAMERA_POWER_PIN_NO               5
+
 // <o> Camera module reset GPIO port number and pin number
 #define BOARD_CAMERA_RESET_GPIO_PORT            9
 #define BOARD_CAMERA_RESET_PIN_NO               1
