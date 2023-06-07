@@ -13,7 +13,7 @@
  * @brief    BOARD API
  ******************************************************************************/
 
-#define BOARD_I3C_INSTANCE                      0
+#define BOARD_CAMERA_I2C_INSTANCE               30 /* Signifying I3C interface */
 
 #define BOARD_I2C_INSTANCE                      0
 

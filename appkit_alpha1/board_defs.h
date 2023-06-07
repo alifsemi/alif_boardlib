@@ -13,7 +13,7 @@
  * @brief    BOARD definitions for the Alif Application Kit (rev. Alpha1)
  ******************************************************************************/
 
-#define BOARD_I3C_INSTANCE                      0
+#define BOARD_CAMERA_I2C_INSTANCE               30 /* Signifying I3C interface */
 
 #define BOARD_I2C_INSTANCE                      0
 

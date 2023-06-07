@@ -13,7 +13,7 @@
  * @brief    BOARD API
  ******************************************************************************/
 
-#define BOARD_I2C_INSTANCE                      1
+#define BOARD_CAMERA_I2C_INSTANCE               1
 
 #define BOARD_I2S_INSTANCE                      3
 
@@ -31,13 +31,13 @@
 #define BOARD_LEDRGB_COUNT                      2
 #define BOARD_BUTTON_COUNT                      2
 
-// <o> User BUTTON1 (sw1) GPIO port number and pin number
-#define BOARD_BUTTON1_GPIO_PORT                 8
-#define BOARD_BUTTON1_PIN_NO                    4
+// <o> User BUTTON1 (JOY_SW4 - down) GPIO port number and pin number
+#define BOARD_BUTTON1_GPIO_PORT                 15
+#define BOARD_BUTTON1_PIN_NO                    3
 
-// <o> User BUTTON2 (sw2) GPIO port number and pin number
-#define BOARD_BUTTON2_GPIO_PORT                 8
-#define BOARD_BUTTON2_PIN_NO                    5
+// <o> User BUTTON2 (JOY_SW5 - click) GPIO port number and pin number
+#define BOARD_BUTTON2_GPIO_PORT                 15
+#define BOARD_BUTTON2_PIN_NO                    4
 
 // <o> User LEDRGB0 (D10) GPIO port numbers and pin numbers
 #define BOARD_LEDRGB0_R_GPIO_PORT               12
@@ -82,6 +82,10 @@
 // <o> Touch screen interrupt GPIO port number and pin number
 #define BOARD_TOUCH_INT_GPIO_PORT               9
 #define BOARD_TOUCH_INT_PIN_NO                  4
+
+// <o> Camera module power GPIO port number and pin number
+#define BOARD_CAMERA_POWER_GPIO_PORT            7
+#define BOARD_CAMERA_POWER_PIN_NO               5
 
 // <o> Camera module reset GPIO port number and pin number
 #define BOARD_CAMERA_RESET_GPIO_PORT            9
