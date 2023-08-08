@@ -52,7 +52,7 @@ void BOARD_Pinmux_Init()
 
 	uint32_t config_i2c =
 			PADCTRL_READ_ENABLE |
-			PADCTRL_DRIVER_DISABLED_PULL_UP;
+			PADCTRL_DRIVER_DISABLED_HIGH_Z;
 
 	uint32_t config_i3c =
 			PADCTRL_READ_ENABLE |
