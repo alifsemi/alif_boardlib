@@ -32,11 +32,11 @@
 #define BOARD_BUTTON_COUNT                      2
 
 // <o> User BUTTON1 (JOY_SW4 - down) GPIO port number and pin number
-#define BOARD_BUTTON1_GPIO_PORT                 15
+#define BOARD_BUTTON1_GPIO_PORT                 LP
 #define BOARD_BUTTON1_PIN_NO                    3
 
 // <o> User BUTTON2 (JOY_SW5 - click) GPIO port number and pin number
-#define BOARD_BUTTON2_GPIO_PORT                 15
+#define BOARD_BUTTON2_GPIO_PORT                 LP
 #define BOARD_BUTTON2_PIN_NO                    4
 
 // <o> User LEDRGB0 (D10) GPIO port numbers and pin numbers
@@ -68,7 +68,7 @@
 #define BOARD_LED2_PIN_NO                       4
 
 // <o> LCD panel reset GPIO port number and pin number
-#define BOARD_LCD_RESET_GPIO_PORT               15
+#define BOARD_LCD_RESET_GPIO_PORT               LP
 #define BOARD_LCD_RESET_PIN_NO                  5
 
 // <o> LCD panel backlight GPIO port number and pin number
