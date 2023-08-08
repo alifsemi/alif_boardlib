@@ -21,6 +21,11 @@
 #include "Driver_GPIO.h"
 #include "pinconf.h"
 
+#ifndef PORT_
+#define _PORT_(n)  PORT_##n
+#define  PORT_(n) _PORT_(n)
+#endif
+
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
 extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_LED1_GPIO_PORT);
