@@ -1,4 +1,4 @@
-/* Copyright (C) 2022 Alif Semiconductor - All Rights Reserved.
+/* Copyright (C) 2023 Alif Semiconductor - All Rights Reserved.
  * Use, distribution and modification of this code is permitted under the
  * terms stated in the Alif Semiconductor Software License Agreement
  *
@@ -39,6 +39,9 @@
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 4)
 #define BOARD_IS_ALIF_DEVKIT_B0_VARIANT
 #include "devkit_b0/board_defs.h"
+#elif (BOARD_ALIF_DEVKIT_VARIANT == 5)
+#define BOARD_IS_ALIF_APPKIT_B1_VARIANT
+#include "appkit_b1/board_defs.h"
 #endif
 
 // <o> ILI9806E LCD panel variant
