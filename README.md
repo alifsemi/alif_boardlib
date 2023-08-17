@@ -8,7 +8,7 @@ This board library has been tested on the following evaluation platforms.
 - Alif Development Kit BASE-BOARD with
   - Silicon Rev A1/A6 CPU-CARD (BGA)
   - Silicon Rev B0 CPU-CARD (COB board)
-- Alif AI/ML Application Kit in Alpha1 and Alpha2 revisions
+- Alif AI/ML Application Kit in Alpha1, Alpha2 & Rev B1 revisions
 - Alif Development Kit with Silicon Rev B0 (flatboard)
 
 ## Adding boardlib to a project in Arm-DS
