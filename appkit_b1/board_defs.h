@@ -15,15 +15,9 @@
 
 #define BOARD_CAMERA_I2C_INSTANCE               1
 
-#define BOARD_I2C_INSTANCE                      0
-
-#define BOARD_I2S_INSTANCE                      3	/* I2S2, I2S3 */
+#define BOARD_I2S_INSTANCE                      3
 
 #define BOARD_PDM_INSTANCE                      2
-
-#define BOARD_SPI_INSTANCE                      1
-#define BOARD_SPI_SS_PORT                       12	/* WIFI_SS */
-#define BOARD_SPI_SS_PIN                        7
 
 #define BOARD_UART1_INSTANCE                    2
 
@@ -33,11 +27,11 @@
 #define BOARD_LEDRGB_COUNT                      2
 #define BOARD_BUTTON_COUNT                      2
 
-// <o> User BUTTON1 (JOY_SW4) GPIO port number and pin number
+// <o> User BUTTON1 (JOY_SW4 - down) GPIO port number and pin number
 #define BOARD_BUTTON1_GPIO_PORT                 LP
 #define BOARD_BUTTON1_PIN_NO                    3
 
-// <o> User BUTTON2 (JOY_SW5) GPIO port number and pin number
+// <o> User BUTTON2 (JOY_SW5 - click) GPIO port number and pin number
 #define BOARD_BUTTON2_GPIO_PORT                 LP
 #define BOARD_BUTTON2_PIN_NO                    4
 
