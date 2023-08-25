@@ -79,6 +79,14 @@ void BOARD_Pinmux_Init()
 			PADCTRL_SCHMITT_TRIGGER_ENABLE |
 			PADCTRL_OUTPUT_DRIVE_STRENGTH_04_MILI_AMPS;
 
+	uint32_t config_can_rx =
+			PADCTRL_READ_ENABLE |
+			PADCTRL_SCHMITT_TRIGGER_ENABLE;
+
+	uint32_t config_can_tx =
+			PADCTRL_OUTPUT_DRIVE_STRENGTH_12_MILI_AMPS |
+			PADCTRL_SCHMITT_TRIGGER_ENABLE;
+
 	/* GPIO interfaces - initial GPIO state is lowest power */
 
 	BOARD_BUTTON1_GPIOdrv->Initialize(BOARD_BUTTON1_PIN_NO, NULL);
@@ -186,6 +194,10 @@ void BOARD_Pinmux_Init()
 	/* UART4 interface */
 	pinconf_set(PORT_12, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);	// P12_1: RX  (mux mode 2)
 	pinconf_set(PORT_12, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P12_2: TX  (mux mode 2)
+
+	/* CANFD interface */
+	pinconf_set(PORT_0, PIN_4, PINMUX_ALTERNATE_FUNCTION_6, config_can_rx);     // P0_4: CAN_RX (mux mode 6)
+	pinconf_set(PORT_0, PIN_5, PINMUX_ALTERNATE_FUNCTION_6, config_can_tx);     // P0_5: CAN_TX (mux mode 6)
 }
 
 void BOARD_Clock_Init()
