@@ -1,4 +1,4 @@
-/* Copyright (C) 2022 Alif Semiconductor - All Rights Reserved.
+/* Copyright (C) 2023 Alif Semiconductor - All Rights Reserved.
  * Use, distribution and modification of this code is permitted under the
  * terms stated in the Alif Semiconductor Software License Agreement
  *
@@ -19,14 +19,17 @@
 #define __BOARD_LIB_H
 
 // <o> Alif Development Kit variant
-//     <0=> Alif Development Kit (Silicon Rev A / Board Rev B and Rev C)
-//     <1=> Alif AI/ML Application Kit (Silicon Rev A / Board Rev A)
-//     <2=> Alif AI/ML Application Kit (Silicon Rev A / Board Rev B)
+//     <0=> Alif Development Kit (Generation 1 Silicon Rev A / Board Rev B and Rev C)
+//     <1=> Alif AI/ML Application Kit (Generation 1 Silicon Rev A / Board Rev A)
+//     <2=> Alif AI/ML Application Kit (Generation 1 Silicon Rev A / Board Rev B)
+//     <3=> Alif Development Kit (Generation 2 Silicon Rev B / Internal CoB Board)
+//     <4=> Alif Development Kit (Generation 2 Silicon RevBA / Board Rev A, B, C)
+//     <5=> Alif AI/ML Application Kit (Generation 2 Silicon Rev B / Board Rev A)
 #define BOARD_ALIF_DEVKIT_VARIANT       0
 
 #if (BOARD_ALIF_DEVKIT_VARIANT == 0)
 #define BOARD_IS_ALIF_DEVKIT_VARIANT
-#include "devkit/board_defs.h"
+#include "devkit_gen1/board_defs.h"
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 1)
 #define BOARD_IS_ALIF_APPKIT_ALPHA1_VARIANT
 #include "appkit_alpha1/board_defs.h"
@@ -38,7 +41,10 @@
 #include "devkit_b0_cob/board_defs.h"
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 4)
 #define BOARD_IS_ALIF_DEVKIT_B0_VARIANT
-#include "devkit_b0/board_defs.h"
+#include "devkit_gen2/board_defs.h"
+#elif (BOARD_ALIF_DEVKIT_VARIANT == 5)
+#define BOARD_IS_ALIF_APPKIT_B1_VARIANT
+#include "appkit_gen2/board_defs.h"
 #endif
 
 // <o> ILI9806E LCD panel variant

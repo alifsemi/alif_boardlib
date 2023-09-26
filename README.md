@@ -6,8 +6,9 @@ BOARD support library for Alif Semiconductor Development and Application Kits
 
 This board library has been tested on the following evaluation platforms.
 - Generation 1 Development Kit
-- Generation 1 AI/ML Application Kit in Alpha1 and Alpha2 revisions
+- Generation 1 AI/ML Application Kit (Alpha1 and Alpha2 revisions)
 - Generation 2 Development Kit
+- Generation 2 AI/ML Application Kit
 
 For most of the application projects, the board library is a submodule and will be part of the project once *submodule init* and *submodule update* is done.
 
