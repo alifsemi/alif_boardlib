@@ -13,7 +13,7 @@
  * @brief    BOARD API
  ******************************************************************************/
 
-#define BOARD_CAMERA_I2C_INSTANCE               30 /* Signifying I3C interface */
+#define BOARD_CAMERA_I2C_INSTANCE               I3C
 
 #define BOARD_I2S_INSTANCE                      4 /* SoC has I2S0-3 and LPI2S is assigned to 4 */
 
@@ -48,7 +48,7 @@
 #define BOARD_LED2_PIN_NO                       2
 
 // <o> LCD panel reset GPIO port number and pin number
-#define BOARD_LCD_RESET_GPIO_PORT               15
+#define BOARD_LCD_RESET_GPIO_PORT               LP
 #define BOARD_LCD_RESET_PIN_NO                  4
 
 // <o> LCD panel backlight GPIO port number and pin number
@@ -56,7 +56,7 @@
 #define BOARD_LCD_BACKLIGHT_PIN_NO              1
 
 // <o> Touch screen reset GPIO port number and pin number
-#define BOARD_TOUCH_RESET_GPIO_PORT             15
+#define BOARD_TOUCH_RESET_GPIO_PORT             LP
 #define BOARD_TOUCH_RESET_PIN_NO                2
 
 // <o> Touch screen interrupt GPIO port number and pin number
@@ -64,5 +64,5 @@
 #define BOARD_TOUCH_INT_PIN_NO                  4
 
 // <o> Camera module reset GPIO port number and pin number
-#define BOARD_CAMERA_RESET_GPIO_PORT            15
+#define BOARD_CAMERA_RESET_GPIO_PORT            LP
 #define BOARD_CAMERA_RESET_PIN_NO               5

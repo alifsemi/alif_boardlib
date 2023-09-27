@@ -1,4 +1,4 @@
-/* Copyright (C) 2022 Alif Semiconductor - All Rights Reserved.
+/* Copyright (C) 2023 Alif Semiconductor - All Rights Reserved.
  * Use, distribution and modification of this code is permitted under the
  * terms stated in the Alif Semiconductor Software License Agreement
  *
@@ -9,13 +9,13 @@
  */
 
 /******************************************************************************
- * @file     board_DevKit.c
- * @brief    BOARD API implementation for Alif Development Kit (Rev. A and B)
+ * @file     board_AppKit_B1.c
+ * @brief    BOARD API implementation for Alif AI/ML Application Kit (Rev.B)
  ******************************************************************************/
 
 #include "board.h"
 
-#if defined(BOARD_IS_ALIF_DEVKIT_B0_COB_VARIANT)
+#if defined(BOARD_IS_ALIF_APPKIT_B1_VARIANT)
 #include "app_map.h"
 #include "global_map.h"
 #include "Driver_GPIO.h"
@@ -37,6 +37,7 @@ void BOARD_Pinmux_Init()
 	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_LCD_BACKLIGHT_GPIO_PORT);
 	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_TOUCH_RESET_GPIO_PORT);
 	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_TOUCH_INT_GPIO_PORT);
+	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_CAMERA_POWER_GPIO_PORT);
 	extern ARM_DRIVER_GPIO ARM_Driver_GPIO_(BOARD_CAMERA_RESET_GPIO_PORT);
 
 	ARM_DRIVER_GPIO *BOARD_BUTTON1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
@@ -47,15 +48,32 @@ void BOARD_Pinmux_Init()
 	ARM_DRIVER_GPIO *BOARD_LCD_BACKLIGHT_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LCD_BACKLIGHT_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_TOUCH_RESET_GPIOdrv = &ARM_Driver_GPIO_(BOARD_TOUCH_RESET_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_TOUCH_INT_GPIOdrv = &ARM_Driver_GPIO_(BOARD_TOUCH_INT_GPIO_PORT);
+	ARM_DRIVER_GPIO *BOARD_CAMERA_POWER_GPIOdrv = &ARM_Driver_GPIO_(BOARD_CAMERA_POWER_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_CAMERA_RESET_GPIOdrv = &ARM_Driver_GPIO_(BOARD_CAMERA_RESET_GPIO_PORT);
 
-	uint32_t config_i3c =
+	uint32_t config_input =
 			PADCTRL_READ_ENABLE |
+			PADCTRL_SCHMITT_TRIGGER_ENABLE;
+
+	uint32_t config_i2c =
+			PADCTRL_READ_ENABLE |
+			PADCTRL_DRIVER_DISABLED_PULL_UP;
+/*
 			PADCTRL_SCHMITT_TRIGGER_ENABLE |
 			PADCTRL_DRIVER_DISABLED_PULL_UP |
 			PADCTRL_DRIVER_OPEN_DRAIN;
+*/
+	uint32_t config_i3c =
+			PADCTRL_READ_ENABLE |
+			PADCTRL_SCHMITT_TRIGGER_ENABLE |
+			PADCTRL_DRIVER_DISABLED_PULL_UP;
 
 	uint32_t config_uart_rx =
+			PADCTRL_READ_ENABLE |
+			PADCTRL_SCHMITT_TRIGGER_ENABLE |
+			PADCTRL_DRIVER_DISABLED_PULL_UP;
+
+	uint32_t config_button =
 			PADCTRL_READ_ENABLE |
 			PADCTRL_SCHMITT_TRIGGER_ENABLE |
 			PADCTRL_DRIVER_DISABLED_PULL_UP;
@@ -70,12 +88,12 @@ void BOARD_Pinmux_Init()
 	BOARD_BUTTON1_GPIOdrv->Initialize(BOARD_BUTTON1_PIN_NO, NULL);
 	BOARD_BUTTON1_GPIOdrv->PowerControl(BOARD_BUTTON1_PIN_NO, ARM_POWER_FULL);
 	BOARD_BUTTON1_GPIOdrv->SetDirection(BOARD_BUTTON1_PIN_NO, GPIO_PIN_DIRECTION_INPUT);
-	pinconf_set(PORT_(BOARD_BUTTON1_GPIO_PORT), BOARD_BUTTON1_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0, config_gpio);
+	pinconf_set(PORT_(BOARD_BUTTON1_GPIO_PORT), BOARD_BUTTON1_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0, config_button);
 
 	BOARD_BUTTON2_GPIOdrv->Initialize(BOARD_BUTTON2_PIN_NO, NULL);
 	BOARD_BUTTON2_GPIOdrv->PowerControl(BOARD_BUTTON2_PIN_NO, ARM_POWER_FULL);
 	BOARD_BUTTON2_GPIOdrv->SetDirection(BOARD_BUTTON2_PIN_NO, GPIO_PIN_DIRECTION_INPUT);
-	pinconf_set(PORT_(BOARD_BUTTON2_GPIO_PORT), BOARD_BUTTON2_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0, config_gpio);
+	pinconf_set(PORT_(BOARD_BUTTON2_GPIO_PORT), BOARD_BUTTON2_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0, config_button);
 
 	BOARD_LED1_GPIOdrv->Initialize(BOARD_LED1_PIN_NO, NULL);
 	BOARD_LED1_GPIOdrv->PowerControl(BOARD_LED1_PIN_NO, ARM_POWER_FULL);
@@ -113,6 +131,12 @@ void BOARD_Pinmux_Init()
 	BOARD_TOUCH_INT_GPIOdrv->SetDirection(BOARD_TOUCH_INT_PIN_NO, GPIO_PIN_DIRECTION_OUTPUT);
 	pinconf_set(PORT_(BOARD_TOUCH_INT_GPIO_PORT), BOARD_TOUCH_INT_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0, config_gpio);
 
+	BOARD_CAMERA_POWER_GPIOdrv->Initialize(BOARD_CAMERA_POWER_PIN_NO, NULL);
+	BOARD_CAMERA_POWER_GPIOdrv->PowerControl(BOARD_CAMERA_POWER_PIN_NO, ARM_POWER_FULL);
+	BOARD_CAMERA_POWER_GPIOdrv->SetValue(BOARD_CAMERA_POWER_PIN_NO, GPIO_PIN_OUTPUT_STATE_LOW);
+	BOARD_CAMERA_POWER_GPIOdrv->SetDirection(BOARD_CAMERA_POWER_PIN_NO, GPIO_PIN_DIRECTION_OUTPUT);
+	pinconf_set(PORT_(BOARD_CAMERA_POWER_GPIO_PORT), BOARD_CAMERA_POWER_PIN_NO, PINMUX_ALTERNATE_FUNCTION_0, config_gpio);
+
 	BOARD_CAMERA_RESET_GPIOdrv->Initialize(BOARD_CAMERA_RESET_PIN_NO, NULL);
 	BOARD_CAMERA_RESET_GPIOdrv->PowerControl(BOARD_CAMERA_RESET_PIN_NO, ARM_POWER_FULL);
 	BOARD_CAMERA_RESET_GPIOdrv->SetValue(BOARD_CAMERA_RESET_PIN_NO, GPIO_PIN_OUTPUT_STATE_LOW);
@@ -123,54 +147,47 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_1, PIN_0, PINMUX_ALTERNATE_FUNCTION_1, config_uart_rx);	// P1_0: RX  (mux mode 1)
 	pinconf_set(PORT_1, PIN_1, PINMUX_ALTERNATE_FUNCTION_1, 0);					// P1_1: TX  (mux mode 1)
 
-	/* UART5 interface */
-	pinconf_set(PORT_5, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);	// P5_2: RX  (mux mode 2)
-	pinconf_set(PORT_5, PIN_3, PINMUX_ALTERNATE_FUNCTION_2, 0);					// P5_3: TX  (mux mode 2)
+    /* I2C0 interface */
+    pinconf_set(PORT_3, PIN_4, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P3_4: SCL (mux mode 5)
+    pinconf_set(PORT_3, PIN_5, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P3_5: SDA (mux mode 5)
 
-	/* I3C interface */
+    /* PDM2 interface */
+    pinconf_set(PORT_5, PIN_4, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P5_4: D2 (mux mode 3)
+    pinconf_set(PORT_6, PIN_7, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P6_7: C2 (mux mode 3)
+
+    /* I2C1 interface (camera, touch) */
+    pinconf_set(PORT_7, PIN_2, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_2: SDA (mux mode 5)
+    pinconf_set(PORT_7, PIN_3, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_3: SCL (mux mode 5)
+
+	/* I3C interface (gyro) */
 	pinconf_set(PORT_7, PIN_6, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_6: SDA (mux mode 6)
 	pinconf_set(PORT_7, PIN_7, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_7: SCL (mux mode 6)
 
+    /* I2S3 interface */
+    pinconf_set(PORT_8, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P8_6: SCLK(mux mode 2)
+    pinconf_set(PORT_8, PIN_7, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P8_7: WS  (mux mode 2)
+    pinconf_set(PORT_9, PIN_0, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P9_0: SDI (mux mode 2)
+
 	/* CAMERA clock output */
-	pinconf_set(PORT_10, PIN_3, PINMUX_ALTERNATE_FUNCTION_7, 0);				// P10_3: CAM_XVCLK (mux mode 7)
+	pinconf_set(PORT_0,  PIN_3, PINMUX_ALTERNATE_FUNCTION_6, 0);   				// P0_3: CAM_XVCLK (mux mode 6)
 
 	/* UART4 interface */
 	pinconf_set(PORT_12, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);	// P12_1: RX  (mux mode 2)
 	pinconf_set(PORT_12, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P12_2: TX  (mux mode 2)
-
-	/* SPI3 interface */
-	pinconf_set(PORT_12, PIN_4, PINMUX_ALTERNATE_FUNCTION_2, PADCTRL_READ_ENABLE);   // P12_4: MISO (mux mode 2)
-	pinconf_set(PORT_12, PIN_5, PINMUX_ALTERNATE_FUNCTION_2, 0);   				// P12_5: MOSI (mux mode 2)
-	pinconf_set(PORT_12, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, 0);   				// P12_6: SCLK (mux mode 2)
-	pinconf_set(PORT_12, PIN_7, PINMUX_ALTERNATE_FUNCTION_0, 0);   				// P12_7: GPIO (mux mode 0)
-
-	/* LPI2S interface */
-	pinconf_set(PORT_13, PIN_4, PINMUX_ALTERNATE_FUNCTION_2, PADCTRL_READ_ENABLE);	// P13_4: SDI (mux mode 2)
-	pinconf_set(PORT_13, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P13_6: SCLK(mux mode 2)
-	pinconf_set(PORT_13, PIN_7, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P13_7: WS  (mux mode 2)
-
-	/* OSPI0 interface */
-	pinconf_set(PORT_6, PIN_0, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D0
-	pinconf_set(PORT_6, PIN_1, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D1
-	pinconf_set(PORT_6, PIN_2, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D2
-	pinconf_set(PORT_6, PIN_3, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D3
-	pinconf_set(PORT_6, PIN_4, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D4
-	pinconf_set(PORT_6, PIN_5, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D5
-	pinconf_set(PORT_6, PIN_6, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D6
-	pinconf_set(PORT_6, PIN_7, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // D7
-	pinconf_set(PORT_3, PIN_0, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // SCLK
-	pinconf_set(PORT_3, PIN_1, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // SCLKN
-	pinconf_set(PORT_3, PIN_2, PINMUX_ALTERNATE_FUNCTION_1, 0);    // CS
-	pinconf_set(PORT_3, PIN_4, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_READ_ENABLE);    // RXDS
-	pinconf_set(PORT_LP,PIN_6, PINMUX_ALTERNATE_FUNCTION_0, 0);    // RESET
 }
 
-#include "clk.h"
 void BOARD_Clock_Init()
 {
 	/* Configure any SoC clock muxes and dividers
 	 * if not already covered in driver code
 	 */
+
+	/* CFGPER0 Registers */
+	/* CFGPER0_BASE
+	 * ipclk_force[31] set to 1 to force peripheral clocks on
+	 * pclk_force[30] set to 1 to force interface clocks (PCLK) on
+	 */
+  //HW_REG32(CFGPER0_BASE, 0) = (1U << 31) | (1U << 30);
 
     /* Camera pixel clock (XVCLK) control
      * camera_pixclk_ctrl.divider[24:16] up to 0x1FF
@@ -208,9 +225,7 @@ void BOARD_Clock_Init()
 
 void BOARD_Power_Init()
 {
-	/* Configure any board level power supplies
-	 * or release reset to board mounted ICs
-	 */
+	/* Configure any board level power supplies */
 
 #if 0
 	/* BOARD_LCD_BACKLIGHT_GPIO_PORT */
