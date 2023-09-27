@@ -1,17 +1,20 @@
-# boardlib_DEV
+# BoardLib
 
-BOARD support library for Alif Application Kits and Alif Development Kits
+BOARD support library for Alif Semiconductor Development and Application Kits
 
 ## Development Boards Supported
 
 This board library has been tested on the following evaluation platforms.
-- Alif Development Kit BASE-BOARD with
-  - Silicon Rev A1/A6 CPU-CARD (BGA)
-  - Silicon Rev B0 CPU-CARD (COB board)
-- Alif AI/ML Application Kit in Alpha1 and Alpha2 revisions
-- Alif Development Kit with Silicon Rev B0 (flatboard)
+- Generation 1 Development Kit
+- Generation 1 AI/ML Application Kit (Alpha1 and Alpha2 revisions)
+- Generation 2 Development Kit
+- Generation 2 AI/ML Application Kit
 
-## Adding boardlib to a project in Arm-DS
+For most of the application projects, the board library is a submodule and will be part of the project once *submodule init* and *submodule update* is done.
+
+To manually add the board library to the ARM DS project please follow the instructions below. Similar steps need to be followed for other environments.
+
+## Manually Adding boardlib to a project in Arm-DS
 
 1. Select the project in the left-hand project explorer, and right-click.
 2. Select New -> Folder
@@ -25,7 +28,3 @@ This board library has been tested on the following evaluation platforms.
     1. /${ProjName}/
     2. /${ProjName}/board
 10. You're done!
-
-## Dependencies
-
-Support for the Silicon Rev B0 CPU-CARD (COB board) requres additional steps. Please visit [B0 CMSIS bringup](https://alifsemi.atlassian.net/l/cp/F7kMD1SF) page.
