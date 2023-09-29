@@ -23,6 +23,8 @@
 
 #define BOARD_UART2_INSTANCE                    4
 
+#define BOARD_UART3_INSTANCE                    3
+
 #define CLICKBOARD_I2C_INSTANCE                 0
 #define CLICKBOARD_UART_INSTANCE                0
 #define CLICKBOARD_SPI_INSTANCE                 3
