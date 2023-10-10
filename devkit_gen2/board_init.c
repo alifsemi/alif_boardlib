@@ -199,6 +199,10 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_12, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);	// P12_1: RX  (mux mode 2)
 	pinconf_set(PORT_12, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, 0);				// P12_2: TX  (mux mode 2)
 
+    /* UART6 interface */
+    pinconf_set(PORT_14, PIN_0, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);   // P14_0: RX  (mux mode 2)
+    pinconf_set(PORT_14, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, 0);                // P14_1: TX  (mux mode 2)
+
 	/* CANFD interface */
 	pinconf_set(PORT_0, PIN_4, PINMUX_ALTERNATE_FUNCTION_6, config_can_rx);     // P0_4: CAN_RX (mux mode 6)
 	pinconf_set(PORT_0, PIN_5, PINMUX_ALTERNATE_FUNCTION_6, config_can_tx);     // P0_5: CAN_TX (mux mode 6)
