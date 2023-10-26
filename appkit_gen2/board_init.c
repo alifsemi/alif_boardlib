@@ -81,7 +81,7 @@ void BOARD_Pinmux_Init()
 	uint32_t config_gpio =
 			PADCTRL_READ_ENABLE |
 			PADCTRL_SCHMITT_TRIGGER_ENABLE |
-			PADCTRL_OUTPUT_DRIVE_STRENGTH_04_MILI_AMPS;
+			PADCTRL_OUTPUT_DRIVE_STRENGTH_4MA;
 
 	/* GPIO interfaces - initial GPIO state is lowest power */
 
