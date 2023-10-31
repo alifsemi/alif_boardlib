@@ -12,7 +12,7 @@ This board library has been tested on the following evaluation platforms.
 
 For most of the application projects, the board library is a submodule and will be part of the project once *submodule init* and *submodule update* is done.
 
-To manually add the board library to the ARM DS project please follow the instructions below. Similar steps need to be followed for other environments.
+To manually add the board library to a project please follow the instructions below.
 
 ## Manually Adding boardlib to a project in VSCode
 Most of the application examples provided by Alif Semiconductor already have support for boardlib integrated as a Git submodule. Depending on the board the 
@@ -37,4 +37,3 @@ For adding boardlib support to your project as a submodule
 9. Add the below include folder paths in Project properties
     1. /${ProjName}/
     2. /${ProjName}/board
-10. You're done!
