@@ -1,4 +1,4 @@
-/* Copyright (C) 2022 Alif Semiconductor - All Rights Reserved.
+/* Copyright (C) 2022-2024 Alif Semiconductor - All Rights Reserved.
  * Use, distribution and modification of this code is permitted under the
  * terms stated in the Alif Semiconductor Software License Agreement
  *
@@ -173,7 +173,7 @@ void BOARD_Pinmux_Init()
 
     /* PDM2 interface */
     pinconf_set(PORT_5, PIN_4, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P5_4: D2 (mux mode 3)
-    pinconf_set(PORT_6, PIN_7, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P6_7: C2 (mux mode 3)
+    pinconf_set(PORT_6, PIN_7, PINMUX_ALTERNATE_FUNCTION_3, 0);          		// P6_7: C2 (mux mode 3)
 
     /* I2C1 interface (camera, touch) */
     pinconf_set(PORT_7, PIN_2, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_2: SDA (mux mode 5)
