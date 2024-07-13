@@ -15,7 +15,7 @@
 
 #include "board.h"
 
-#if defined(BOARD_IS_ALIF_BALLETTO_A0_VARIANT)
+#if defined(BOARD_IS_ALIF_DEVKIT_E1C_VARIANT)
 #include "app_map.h"
 #include "global_map.h"
 #include "Driver_GPIO.h"

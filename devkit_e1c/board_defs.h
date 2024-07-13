@@ -21,10 +21,10 @@
 
 #define BOARD_PDM_INSTANCE                      1   // ARS: 07-02-2024, PDM_C2/D2
 
-//#define BOARD_UART1_INSTANCE                    4   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
-#define BOARD_UART2_INSTANCE                    2   // ARS: 07-02-2024, UART2_B (RTE_UART2 in RTE_Device_template_e1c.h)
-#define BOARD_UART3_INSTANCE                    3   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
-#define BOARD_UART4_INSTANCE                    6   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
+#define BOARD_UART1_INSTANCE                    2   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
+//#define BOARD_UART2_INSTANCE                    2   // ARS: 07-02-2024, UART2_B (RTE_UART2 in RTE_Device_template_e1c.h)
+//#define BOARD_UART3_INSTANCE                    3   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
+//#define BOARD_UART4_INSTANCE                    6   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
 
 #define CLICKBOARD_I2C_INSTANCE                 0   // ARS: 07-02-2024, index 0 means 1 (I2C0_C, P7_0,P7_1: CL_SDA, CL_SCL)
 #define CLICKBOARD_UART_INSTANCE                0   // ARS: 07-02-2024, index 0 means 1
