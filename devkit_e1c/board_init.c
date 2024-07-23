@@ -199,7 +199,7 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_1,  PIN_3, PINMUX_ALTERNATE_FUNCTION_1, 0);                // P1_3: TX  (mux mode 1)*/
 
 	/* UART2_B interface */
-	pinconf_set(PORT_5, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);    // P5_2: RXD  (mux mode ?)  uart2_B_rx	// ARS: 07-01-2024
+	pinconf_set(PORT_5, PIN_2, PINMUX_ALTERNATE_FUNCTION_3, config_uart_rx);    // P5_2: RXD  (mux mode ?)  uart2_B_rx	// ARS: 07-01-2024
 	pinconf_set(PORT_5, PIN_3, PINMUX_ALTERNATE_FUNCTION_2, 0);                 // P5_3: TXD  (mux mode ?)  uart2_B_tx	// ARS: 07-01-2024
 
     /* UART6 interface
