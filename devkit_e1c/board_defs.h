@@ -18,6 +18,7 @@
 
 #define BOARD_CODEC_I2S_INSTANCE                0   // ARS: 07-02-2024, I2S_COD
 #define BOARD_MICS_I2S_INSTANCE                 LP  // ARS: 07-02-2024, I2S_FB2
+#define BOARD_I2S_INSTANCE                      BOARD_MICS_I2S_INSTANCE
 
 #define BOARD_PDM_INSTANCE                      1   // ARS: 07-02-2024, PDM_C2/D2
 
@@ -47,7 +48,7 @@
 #define BOARD_LEDRGB0_R_GPIO_PORT               4	// ARS: 07-01-2024
 #define BOARD_LEDRGB0_R_PIN_NO                  7	// ARS: 07-01-2024
 
-#define BOARD_LEDRGB0_G_GPIO_PORT               4	// ARS: 07-01-2024	
+#define BOARD_LEDRGB0_G_GPIO_PORT               4	// ARS: 07-01-2024
 #define BOARD_LEDRGB0_G_PIN_NO                  5	// ARS: 07-01-2024
 
 #define BOARD_LEDRGB0_B_GPIO_PORT               4	// ARS: 07-01-2024

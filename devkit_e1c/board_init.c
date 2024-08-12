@@ -46,7 +46,7 @@ void BOARD_Pinmux_Init()
 
 	ARM_DRIVER_GPIO *BOARD_LED1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED1_GPIO_PORT);
     /*
-	ARM_DRIVER_GPIO *BOARD_LED2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED2_GPIO_PORT);    	
+	ARM_DRIVER_GPIO *BOARD_LED2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LED2_GPIO_PORT);
 	*/
 	ARM_DRIVER_GPIO *BOARD_LCD_RESET_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LCD_RESET_GPIO_PORT);
 	ARM_DRIVER_GPIO *BOARD_LCD_BACKLIGHT_GPIOdrv = &ARM_Driver_GPIO_(BOARD_LCD_BACKLIGHT_GPIO_PORT);
@@ -185,9 +185,9 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_7, PIN_6, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_6: SDA (mux mode 6)
 	pinconf_set(PORT_7, PIN_7, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_7: SCL (mux mode 6)*/
 
-    /* I2S3 interface
-    pinconf_set(PORT_8, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P8_6: SCLK(mux mode 2)
-    pinconf_set(PORT_8, PIN_7, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P8_7: WS  (mux mode 2)
+    /* I2S_FB2 interface */
+    pinconf_set(PORT_9, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P9_2: SCLK(mux mode 2)
+    pinconf_set(PORT_4, PIN_6, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P4_6: WS  (mux mode 3)
     pinconf_set(PORT_9, PIN_0, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P9_0: SDI (mux mode 2)*/
 
 	/* CAMERA clock output
