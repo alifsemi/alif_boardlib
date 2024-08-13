@@ -20,7 +20,7 @@
 #define BOARD_MICS_I2S_INSTANCE                 LP  // ARS: 07-02-2024, I2S_FB2
 #define BOARD_I2S_INSTANCE                      BOARD_MICS_I2S_INSTANCE
 
-#define BOARD_PDM_INSTANCE                      1   // ARS: 07-02-2024, PDM_C2/D2
+#define BOARD_PDM_INSTANCE                      LP  // ARS: 07-02-2024, PDM_C2/D2
 
 #define BOARD_UART1_INSTANCE                    2   // ARS: 07-01-2024 unchanged from BALLETO_FPGA branch
 //#define BOARD_UART2_INSTANCE                    2   // ARS: 07-02-2024, UART2_B (RTE_UART2 in RTE_Device_template_e1c.h)

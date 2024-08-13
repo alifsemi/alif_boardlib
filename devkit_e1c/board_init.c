@@ -173,9 +173,9 @@ void BOARD_Pinmux_Init()
     pinconf_set(PORT_7, PIN_0, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_0: SDA (mux mode 5)
     pinconf_set(PORT_7, PIN_1, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_1: SCL (mux mode 5)
 
-    /* PDM2 interface
-    pinconf_set(PORT_5, PIN_4, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P5_4: D2 (mux mode 3)
-    pinconf_set(PORT_6, PIN_7, PINMUX_ALTERNATE_FUNCTION_3, config_input);		// P6_7: C2 (mux mode 3)*/
+    /* LPPDM interface */
+    pinconf_set(PORT_7, PIN_5, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P7_5: D2 (mux mode 2)
+    pinconf_set(PORT_7, PIN_4, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P7_4: C2 (mux mode 2)*/
 
     /* I2C1 interface (camera, touch)
     pinconf_set(PORT_7, PIN_2, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_2: SDA (mux mode 5)
