@@ -205,9 +205,9 @@ void BOARD_Pinmux_Init()
     pinconf_set(PORT_14, PIN_0, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);   // P14_0: RX  (mux mode 2)
     pinconf_set(PORT_14, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, 0);                // P14_1: TX  (mux mode 2)*/
 
-	/* CANFD interface
-	pinconf_set(PORT_0, PIN_4, PINMUX_ALTERNATE_FUNCTION_6, config_can_rx);     // P0_4: CAN_RX (mux mode 6)
-	pinconf_set(PORT_0, PIN_5, PINMUX_ALTERNATE_FUNCTION_6, config_can_tx);     // P0_5: CAN_TX (mux mode 6)*/
+	/* CANFD interface */
+	pinconf_set(PORT_8, PIN_2, PINMUX_ALTERNATE_FUNCTION_7, config_can_rx); 	// CANFD0_Rx_C
+	pinconf_set(PORT_8, PIN_3, PINMUX_ALTERNATE_FUNCTION_6, config_can_tx); 	// CANFD0_Tx_C
 }
 
 void BOARD_Clock_Init()
