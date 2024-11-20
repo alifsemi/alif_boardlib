@@ -41,9 +41,15 @@ extern "C" {
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 2)
 #define BOARD_IS_ALIF_APPKIT_ALPHA2_VARIANT
 #include "appkit_alpha2/board_defs.h"
+
+/*
+TODO: Reuse this variant number for some future board as needed.
+For now, it points to the latest E7 DevKit, same as Gen2 DevKit
+*/
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 3)
-#define BOARD_IS_ALIF_DEVKIT_B0_COB_VARIANT
-#include "devkit_b0_cob/board_defs.h"
+#define BOARD_IS_ALIF_DEVKIT_Bx_VARIANT
+#include "devkit_gen2/board_defs.h"
+
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 4)
 #define BOARD_IS_ALIF_DEVKIT_B0_VARIANT
 #include "devkit_gen2/board_defs.h"
