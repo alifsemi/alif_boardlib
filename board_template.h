@@ -24,10 +24,7 @@
 extern "C" {
 #endif
 // <o> Alif Development Kit variant
-//     <0=> Alif Development Kit (Generation 1 Silicon Rev A / Board Rev B and Rev C)
-//     <1=> Alif AI/ML Application Kit (Generation 1 Silicon Rev A / Board Rev A)
-//     <2=> Alif AI/ML Application Kit (Generation 1 Silicon Rev A / Board Rev B)
-//     <3=> Alif Development Kit (Generation 2 Silicon Rev B / Internal CoB Board)
+//     <0>-<3> Deprecated boards
 //     <4=> Alif Development Kit (Generation 2 Silicon Rev B / Board Rev A, B, C)
 //     <5=> Alif AI/ML Application Kit (Generation 2 Silicon Rev B / Board Rev A)
 //     <6=> Alif Development Kit for E1C Silicon Rev A
