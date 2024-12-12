@@ -28,7 +28,9 @@ extern "C" {
 //     <4=> Alif Development Kit (Generation 2 Silicon Rev B / Board Rev A, B, C)
 //     <5=> Alif AI/ML Application Kit (Generation 2 Silicon Rev B / Board Rev A)
 //     <6=> Alif Development Kit for E1C Silicon Rev A
+#ifndef BOARD_ALIF_DEVKIT_VARIANT
 #define BOARD_ALIF_DEVKIT_VARIANT       0
+#endif
 
 #if (BOARD_ALIF_DEVKIT_VARIANT >= 0 && BOARD_ALIF_DEVKIT_VARIANT <= 3)
 #error "Support for legacy boards has been deprecated"
