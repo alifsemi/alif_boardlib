@@ -45,7 +45,7 @@ extern "C" {
 #include "devkit_e1c/board_defs.h"
 #else
 #error "Unknown board variant"
-#endif`
+#endif
 
 // <o> ILI9806E LCD panel variant
 //     <0=> E43RB_FW405
