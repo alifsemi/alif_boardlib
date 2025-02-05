@@ -279,13 +279,13 @@ void BOARD_Power_Init()
 void BOARD_BUTTON1_Init(BOARD_Callback_t user_cb)
 {
 	ARM_DRIVER_GPIO *BOARD_BUTTON1_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON1_GPIO_PORT);
-	BOARD_BUTTON1_GPIOdrv->Initialize(BOARD_BUTTON1_PIN_NO, user_cb);
+	BOARD_BUTTON1_GPIOdrv->Initialize(BOARD_BUTTON1_PIN_NO, (ARM_GPIO_SignalEvent_t)user_cb);
 }
 
 void BOARD_BUTTON2_Init(BOARD_Callback_t user_cb)
 {
 	ARM_DRIVER_GPIO *BOARD_BUTTON2_GPIOdrv = &ARM_Driver_GPIO_(BOARD_BUTTON2_GPIO_PORT);
-	BOARD_BUTTON2_GPIOdrv->Initialize(BOARD_BUTTON2_PIN_NO, user_cb);
+	BOARD_BUTTON2_GPIOdrv->Initialize(BOARD_BUTTON2_PIN_NO, (ARM_GPIO_SignalEvent_t)user_cb);
 }
 
 void BOARD_BUTTON1_Control(BOARD_BUTTON_CONTROL control)
