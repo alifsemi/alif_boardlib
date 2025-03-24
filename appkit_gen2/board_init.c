@@ -16,9 +16,8 @@
 #include "board.h"
 
 #if defined(BOARD_IS_ALIF_APPKIT_B1_VARIANT)
-#include "app_map.h"
-#include "global_map.h"
-#include "Driver_GPIO.h"
+#include "soc.h"
+#include "Driver_IO.h"
 #include "pinconf.h"
 
 #ifndef PORT_
