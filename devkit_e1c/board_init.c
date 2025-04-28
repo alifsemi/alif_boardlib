@@ -182,9 +182,9 @@ void BOARD_Pinmux_Init()
     pinconf_set(PORT_7, PIN_2, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_2: SDA (mux mode 5)
     pinconf_set(PORT_7, PIN_3, PINMUX_ALTERNATE_FUNCTION_5, config_i2c);		// P7_3: SCL (mux mode 5)*/
 
-	/* I3C interface (gyro)
-	pinconf_set(PORT_7, PIN_6, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_6: SDA (mux mode 6)
-	pinconf_set(PORT_7, PIN_7, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);		// P7_7: SCL (mux mode 6)*/
+	/* I3C interface (gyro)	*/
+	pinconf_set(PORT_0, PIN_6, PINMUX_ALTERNATE_FUNCTION_5, config_i3c);		// P0_6: SDA (mux mode 5)
+	pinconf_set(PORT_0, PIN_5, PINMUX_ALTERNATE_FUNCTION_5, config_i3c);		// P0_5: SCL (mux mode 5)
 
     /* I2S_FB2 interface */
     pinconf_set(PORT_9, PIN_2, PINMUX_ALTERNATE_FUNCTION_2, config_input);		// P9_2: SCLK(mux mode 2)
