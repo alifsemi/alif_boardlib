@@ -28,7 +28,7 @@
 #define CLICKBOARD_UART_INSTANCE                0   // index 0 means 1
 #define CLICKBOARD_SPI_INSTANCE                 1   // SPI1_C (RTE_SPI1 in RTE_Device_template_e1c.h)
 
-#define BOARD_LED_COUNT                         1
+#define BOARD_LED_COUNT                         2
 #define BOARD_LEDRGB_COUNT                      1
 
 #define BOARD_BUTTON_COUNT                      2
@@ -54,6 +54,10 @@
 // <o> User LED1 (D2-R) GPIO port number and pin number
 #define BOARD_LED1_GPIO_PORT                    4   
 #define BOARD_LED1_PIN_NO                       7
+
+// <o> User LED2 (D2-G) GPIO port number and pin number
+#define BOARD_LED2_GPIO_PORT                    4
+#define BOARD_LED2_PIN_NO                       5
 
 // <o> MIPI Display, LCD panel reset GPIO port number and pin number
 #define BOARD_LCD_RESET_GPIO_PORT               8   
