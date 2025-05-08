@@ -92,6 +92,8 @@ void BOARD_Pinmux_Init()
 			PADCTRL_OUTPUT_DRIVE_STRENGTH_12MA |
 			PADCTRL_SCHMITT_TRIGGER_ENABLE;
 
+    const uint32_t config_sd = PADCTRL_READ_ENABLE | PADCTRL_OUTPUT_DRIVE_STRENGTH_8MA;
+
 	/* GPIO interfaces - initial GPIO state is lowest power */
 
 	BOARD_BUTTON1_GPIOdrv->Initialize(BOARD_BUTTON1_PIN_NO, NULL);
@@ -214,6 +216,16 @@ void BOARD_Pinmux_Init()
 	/* CANFD interface */
 	pinconf_set(PORT_8, PIN_2, PINMUX_ALTERNATE_FUNCTION_7, config_can_rx); 	// CANFD0_Rx_C
 	pinconf_set(PORT_8, PIN_3, PINMUX_ALTERNATE_FUNCTION_6, config_can_tx); 	// CANFD0_Tx_C
+
+    /* SD card */
+    pinconf_set(PORT_2, PIN_6, PINMUX_ALTERNATE_FUNCTION_5, config_sd); //cmd
+    pinconf_set(PORT_2, PIN_7, PINMUX_ALTERNATE_FUNCTION_5, config_sd); //clk
+    pinconf_set(PORT_6, PIN_0, PINMUX_ALTERNATE_FUNCTION_5, config_sd); //d0
+#if RTE_SDC_BUS_WIDTH == SDMMC_4_BIT_MODE
+    pinconf_set(PORT_6, PIN_1, PINMUX_ALTERNATE_FUNCTION_5, config_sd); //d1
+    pinconf_set(PORT_6, PIN_2, PINMUX_ALTERNATE_FUNCTION_5, config_sd); //d2
+    pinconf_set(PORT_6, PIN_3, PINMUX_ALTERNATE_FUNCTION_5, config_sd); //d3
+#endif
 }
 
 void BOARD_Clock_Init()
