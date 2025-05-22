@@ -28,6 +28,7 @@ extern "C" {
 //     <4=> Alif Development Kit (Generation 2 Silicon Rev B / Board Rev A, B, C)
 //     <5=> Alif AI/ML Application Kit (Generation 2 Silicon Rev B / Board Rev A)
 //     <6=> Alif Development Kit for E1C Silicon Rev A
+//     <7=> Alif Development Kit for E8
 #ifndef BOARD_ALIF_DEVKIT_VARIANT
 #define BOARD_ALIF_DEVKIT_VARIANT       0
 #endif
@@ -43,6 +44,9 @@ extern "C" {
 #elif (BOARD_ALIF_DEVKIT_VARIANT == 6)
 #define BOARD_IS_ALIF_DEVKIT_E1C_VARIANT
 #include "devkit_e1c/board_defs.h"
+#elif (BOARD_ALIF_DEVKIT_VARIANT == 7)
+#define BOARD_IS_ALIF_DEVKIT_E8_VARIANT
+#include "devkit_e8/board_defs.h"
 #else
 #error "Unknown board variant"
 #endif
