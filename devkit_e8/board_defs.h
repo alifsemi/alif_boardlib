@@ -25,7 +25,7 @@
 
 #define BOARD_UART3_INSTANCE                    3
 
-#define BOARD_UART4_INSTANCE                    6
+#define BOARD_UART4_INSTANCE                    0
 
 #define CLICKBOARD_I2C_INSTANCE                 0
 #define CLICKBOARD_UART_INSTANCE                0

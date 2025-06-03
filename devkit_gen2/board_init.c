@@ -178,6 +178,10 @@ void BOARD_Pinmux_Init()
 	pinconf_set(PORT_5,  PIN_6, PINMUX_ALTERNATE_FUNCTION_1, PADCTRL_OUTPUT_DRIVE_STRENGTH_12MA | PADCTRL_SLEW_RATE_FAST | PADCTRL_READ_ENABLE);    // RXDS
 	pinconf_set(PORT_LP, PIN_7, PINMUX_ALTERNATE_FUNCTION_0, 0);    // RESET
 
+	/* UART0 interface */
+	pinconf_set(PORT_0, PIN_0, PINMUX_ALTERNATE_FUNCTION_2, config_uart_rx);   // P0_0: RX  (mux mode 2)
+	pinconf_set(PORT_0, PIN_1, PINMUX_ALTERNATE_FUNCTION_2, 0);                // P0_1: TX  (mux mode 2)
+
 	/* UART2 interface */
 	pinconf_set(PORT_1, PIN_0, PINMUX_ALTERNATE_FUNCTION_1, config_uart_rx);	// P1_0: RX  (mux mode 1)
 	pinconf_set(PORT_1, PIN_1, PINMUX_ALTERNATE_FUNCTION_1, 0);					// P1_1: TX  (mux mode 1)
