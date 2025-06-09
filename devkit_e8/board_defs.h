@@ -102,3 +102,7 @@
 // <o> Camera module trigger GPIO port number and pin number
 #define BOARD_CAMERA_TRIGGER_GPIO_PORT          13 // 13_2 C_TRIGGER_2 "Standard" camera, C_TRIGGER_1 14_6 "Selfie" camera. Used to be 9_3 in Bolt
 #define BOARD_CAMERA_TRIGGER_PIN_NO             2
+
+// <o> Front Camera or Display selector mux GPIO port number and pin number (LOW = Camera, HIGH = Display)
+#define BOARD_CAMERA_DISPLAY_MUX_GPIO_PORT      14
+#define BOARD_CAMERA_DISPLAY_MUX_GPIO_PIN_NO    2
