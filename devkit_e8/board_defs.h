@@ -80,7 +80,7 @@
 #define BOARD_LCD_BACKLIGHT_PIN_NO              1
 
 // <o> Touch screen reset GPIO port number and pin number
-#define BOARD_TOUCH_RESET_GPIO_PORT             6 // Used to be 4_0 in Bolt
+#define BOARD_TOUCH_RESET_GPIO_PORT             6
 #define BOARD_TOUCH_RESET_PIN_NO                5
 
 // <o> Touch screen interrupt GPIO port number and pin number
@@ -92,16 +92,16 @@
 #define BOARD_CAMERA_POWER_PIN_NO               5
 
 // <o> Camera module reset GPIO port number and pin number
-#define BOARD_CAMERA_RESET_GPIO_PORT            13 // 13_0 C_RESETn_2 "Standard" camera, C_RESETn_1 14_4 "Selfie" camera. Used to be just one 9_1 in Bolt
-#define BOARD_CAMERA_RESET_PIN_NO               0
+#define BOARD_CAMERA_RESET_GPIO_PORT            14 // 13_0 C_RESETn_2 "Standard" camera, C_RESETn_1 14_4 "Selfie" camera.
+#define BOARD_CAMERA_RESET_PIN_NO               4
 
 // <o> Camera module flash GPIO port number and pin number
-#define BOARD_CAMERA_FLASH_GPIO_PORT            13 // 13_1 C_FLASH_2 "Standard" camera, C_FLASH_1 14_5 "Selfie" camera. Used to be 9_2 in Bolt
-#define BOARD_CAMERA_FLASH_PIN_NO               1
+#define BOARD_CAMERA_FLASH_GPIO_PORT            14 // 13_1 C_FLASH_2 "Standard" camera, C_FLASH_1 14_5 "Selfie" camera.
+#define BOARD_CAMERA_FLASH_PIN_NO               5
 
 // <o> Camera module trigger GPIO port number and pin number
-#define BOARD_CAMERA_TRIGGER_GPIO_PORT          13 // 13_2 C_TRIGGER_2 "Standard" camera, C_TRIGGER_1 14_6 "Selfie" camera. Used to be 9_3 in Bolt
-#define BOARD_CAMERA_TRIGGER_PIN_NO             2
+#define BOARD_CAMERA_TRIGGER_GPIO_PORT          14 // 13_2 C_TRIGGER_2 "Standard" camera, C_TRIGGER_1 14_6 "Selfie" camera.
+#define BOARD_CAMERA_TRIGGER_PIN_NO             6
 
 // <o> Front Camera or Display selector mux GPIO port number and pin number (LOW = Camera, HIGH = Display)
 #define BOARD_CAMERA_DISPLAY_MUX_GPIO_PORT      14
