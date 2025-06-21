@@ -208,10 +208,10 @@ void BOARD_Pinmux_Init()
     pinconf_set(PORT_7, PIN_6, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);        // P7_6: SDA (mux mode 6)
     pinconf_set(PORT_7, PIN_7, PINMUX_ALTERNATE_FUNCTION_6, config_i3c);        // P7_7: SCL (mux mode 6)
 
-    /* I2S3 interface */
-    pinconf_set(PORT_8, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, config_input);      // P8_6: SCLK(mux mode 2)
-    pinconf_set(PORT_8, PIN_7, PINMUX_ALTERNATE_FUNCTION_2, config_input);      // P8_7: WS  (mux mode 2)
-    pinconf_set(PORT_9, PIN_0, PINMUX_ALTERNATE_FUNCTION_2, config_input);      // P9_0: SDI (mux mode 2)
+    /* LPI2S interface */
+    pinconf_set(PORT_13, PIN_6, PINMUX_ALTERNATE_FUNCTION_2, 0);                // P13_6: SCLK(mux mode 2)
+    pinconf_set(PORT_13, PIN_7, PINMUX_ALTERNATE_FUNCTION_2, 0);                // P13_7: WS  (mux mode 2)
+    pinconf_set(PORT_13, PIN_4, PINMUX_ALTERNATE_FUNCTION_2, config_input);     // P13_4: SDI (mux mode 2)
 
     /* CAMERA clock output */
     pinconf_set(PORT_0,  PIN_3, PINMUX_ALTERNATE_FUNCTION_6, 0);                // P0_3: CAM_XVCLK (mux mode 6)

@@ -15,7 +15,7 @@
 
 #define BOARD_CAMERA_I2C_INSTANCE               1
 
-#define BOARD_I2S_INSTANCE                      3
+#define BOARD_I2S_INSTANCE                      LP
 
 #define BOARD_PDM_INSTANCE                      2
 
