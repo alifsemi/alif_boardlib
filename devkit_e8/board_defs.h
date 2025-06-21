@@ -13,6 +13,19 @@
  * @brief    BOARD API
  ******************************************************************************/
 
+#define BOARD_HAS_IS66_RAM                      1
+#define BOARD_HAS_IS25WX_FLASH                  1
+
+#define BOARD_RAM_OSPI_INSTANCE                 0
+#define BOARD_RAM_OSPI_SS                       0
+#define BOARD_FLASH_OSPI_INSTANCE               1
+#define BOARD_FLASH_OSPI_SS                     0
+
+#define BOARD_OSPI_RAM_BASE                     0xA0000000
+#define BOARD_OSPI_RAM_SIZE                     0x04000000
+#define BOARD_OSPI_FLASH_BASE                   0xC0000000
+#define BOARD_OSPI_FLASH_SIZE                   0x08000000
+
 #define BOARD_CAMERA_I2C_INSTANCE               1
 
 #define BOARD_I2S_INSTANCE                      LP
@@ -106,3 +119,10 @@
 // <o> Front Camera or Display selector mux GPIO port number and pin number (LOW = Camera, HIGH = Display)
 #define BOARD_CAMERA_DISPLAY_MUX_GPIO_PORT      14
 #define BOARD_CAMERA_DISPLAY_MUX_GPIO_PIN_NO    2
+
+#define BOARD_OSPI_RAM_RESET_GPIO_PORT          LP
+#define BOARD_OSPI_RAM_RESET_PIN_NO             6
+
+#define BOARD_OSPI_FLASH_RESET_GPIO_PORT        LP
+#define BOARD_OSPI_FLASH_RESET_PIN_NO           7
+

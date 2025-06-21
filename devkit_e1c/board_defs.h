@@ -12,6 +12,20 @@
  * @file     board.h
  * @brief    BOARD API
  ******************************************************************************/
+
+#define BOARD_HAS_IS66_RAM                      1
+#define BOARD_HAS_IS25WX_FLASH                  1
+
+#define BOARD_RAM_OSPI_INSTANCE                 0
+#define BOARD_RAM_OSPI_SS                       0
+#define BOARD_FLASH_OSPI_INSTANCE               0
+#define BOARD_FLASH_OSPI_SS                     1
+
+#define BOARD_OSPI_RAM_BASE                     0xA0000000
+#define BOARD_OSPI_RAM_SIZE                     0x04000000
+#define BOARD_OSPI_FLASH_BASE                   0xB0000000
+#define BOARD_OSPI_FLASH_SIZE                   0x08000000
+
 /*
 #define BOARD_CAMERA_I2C_INSTANCE               1
 */
@@ -87,3 +101,9 @@
 #define BOARD_CAMERA_TRIGGER_GPIO_PORT          9
 #define BOARD_CAMERA_TRIGGER_PIN_NO             3
 */
+
+#define BOARD_OSPI_RAM_RESET_GPIO_PORT          LP
+#define BOARD_OSPI_RAM_RESET_PIN_NO             1
+
+#define BOARD_OSPI_FLASH_RESET_GPIO_PORT        LP
+#define BOARD_OSPI_FLASH_RESET_PIN_NO           1
