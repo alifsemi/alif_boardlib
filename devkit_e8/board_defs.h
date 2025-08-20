@@ -1,4 +1,4 @@
-/* Copyright (C) 2022 Alif Semiconductor - All Rights Reserved.
+/* Copyright (C) 2025 Alif Semiconductor - All Rights Reserved.
  * Use, distribution and modification of this code is permitted under the
  * terms stated in the Alif Semiconductor Software License Agreement
  *
@@ -24,11 +24,11 @@
 #define BOARD_OSPI_RAM_BASE                     0xA0000000
 #define BOARD_OSPI_RAM_SIZE                     0x04000000
 #define BOARD_OSPI_FLASH_BASE                   0xC0000000
-#define BOARD_OSPI_FLASH_SIZE                   0x04000000
+#define BOARD_OSPI_FLASH_SIZE                   0x08000000
 
 #define BOARD_CAMERA_I2C_INSTANCE               1
 
-#define BOARD_I2S_INSTANCE                      3
+#define BOARD_I2S_INSTANCE                      LP
 
 #define BOARD_PDM_INSTANCE                      2
 
@@ -38,7 +38,7 @@
 
 #define BOARD_UART3_INSTANCE                    3
 
-#define BOARD_UART4_INSTANCE                    6
+#define BOARD_UART4_INSTANCE                    0
 
 #define CLICKBOARD_I2C_INSTANCE                 0
 #define CLICKBOARD_UART_INSTANCE                0
@@ -93,8 +93,8 @@
 #define BOARD_LCD_BACKLIGHT_PIN_NO              1
 
 // <o> Touch screen reset GPIO port number and pin number
-#define BOARD_TOUCH_RESET_GPIO_PORT             4
-#define BOARD_TOUCH_RESET_PIN_NO                0
+#define BOARD_TOUCH_RESET_GPIO_PORT             6
+#define BOARD_TOUCH_RESET_PIN_NO                5
 
 // <o> Touch screen interrupt GPIO port number and pin number
 #define BOARD_TOUCH_INT_GPIO_PORT               9
@@ -105,19 +105,24 @@
 #define BOARD_CAMERA_POWER_PIN_NO               5
 
 // <o> Camera module reset GPIO port number and pin number
-#define BOARD_CAMERA_RESET_GPIO_PORT            9
-#define BOARD_CAMERA_RESET_PIN_NO               1
+#define BOARD_CAMERA_RESET_GPIO_PORT            14 // 13_0 C_RESETn_2 "Standard" camera, C_RESETn_1 14_4 "Selfie" camera.
+#define BOARD_CAMERA_RESET_PIN_NO               4
 
 // <o> Camera module flash GPIO port number and pin number
-#define BOARD_CAMERA_FLASH_GPIO_PORT            9
-#define BOARD_CAMERA_FLASH_PIN_NO               2
+#define BOARD_CAMERA_FLASH_GPIO_PORT            14 // 13_1 C_FLASH_2 "Standard" camera, C_FLASH_1 14_5 "Selfie" camera.
+#define BOARD_CAMERA_FLASH_PIN_NO               5
 
 // <o> Camera module trigger GPIO port number and pin number
-#define BOARD_CAMERA_TRIGGER_GPIO_PORT          9
-#define BOARD_CAMERA_TRIGGER_PIN_NO             3
+#define BOARD_CAMERA_TRIGGER_GPIO_PORT          14 // 13_2 C_TRIGGER_2 "Standard" camera, C_TRIGGER_1 14_6 "Selfie" camera.
+#define BOARD_CAMERA_TRIGGER_PIN_NO             6
+
+// <o> Front Camera or Display selector mux GPIO port number and pin number (LOW = Camera, HIGH = Display)
+#define BOARD_CAMERA_DISPLAY_MUX_GPIO_PORT      14
+#define BOARD_CAMERA_DISPLAY_MUX_GPIO_PIN_NO    2
 
 #define BOARD_OSPI_RAM_RESET_GPIO_PORT          LP
 #define BOARD_OSPI_RAM_RESET_PIN_NO             6
 
 #define BOARD_OSPI_FLASH_RESET_GPIO_PORT        LP
 #define BOARD_OSPI_FLASH_RESET_PIN_NO           7
+
